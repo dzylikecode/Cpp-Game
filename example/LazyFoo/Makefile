@@ -1,0 +1,1 @@
+g_g_BuildPath =../Build
