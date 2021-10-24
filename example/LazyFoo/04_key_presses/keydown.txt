@@ -1,0 +1,6 @@
+extend input
+
+process event 
+    keydown event
+        switch keyType
+            case 'keyName'

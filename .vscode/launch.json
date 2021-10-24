@@ -11,7 +11,7 @@
             "program": "${fileDirname}\\..\\Build\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "E:/CPP/mingw64/bin",
+            "cwd": "${fileDirname}\\..\\Build",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

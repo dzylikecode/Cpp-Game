@@ -1,0 +1,6 @@
+
+loadSurface: [filename]
+    pTemp = loadBmp(filename)
+    pResult = convertSurface(pTemp) // convert to compatible format(windows surface format)
+    freeSurface(pTemp)
+    return pResult

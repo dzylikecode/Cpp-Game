@@ -1,4 +1,2 @@
-example/LazyFoo/02_getting_an_image_on_the_screen/hello_world.bmp
-example/LazyFoo/02_getting_an_image_on_the_screen/readme.txt
-example/LazyFoo/02_getting_an_image_on_the_screen/02_getting_an_image_on_the_screen.cpp
+example/LazyFoo/*/*.cpp
 example/LazyFoo/Build/

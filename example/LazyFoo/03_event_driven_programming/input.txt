@@ -1,0 +1,6 @@
+
+Event Loop :
+main
+    while 
+        while Poll All Events // quit when current event stack is empty
+            process event
