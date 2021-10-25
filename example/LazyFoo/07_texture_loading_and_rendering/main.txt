@@ -1,0 +1,9 @@
+
+main:
+    init    // init SDL, load picture etc.
+    while
+        while Poll Event
+
+        Clear Renderer  <- set Renderer background
+        Copy Renderer
+        Update Renderer

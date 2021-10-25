@@ -7,3 +7,4 @@ g_SDL_LibPath =F:/user/La_Library/MinGW/SDL2-devel-2.0.16-mingw.tar/SDL2-devel-2
 s_OutputWindow ?=#-w -Wl,-subsystem,windows
 g_CompilerOptions =$(s_OutputWindow) -fdiagnostics-color=always -g 
 g_LinkOptions =-lmingw32 -lSDL2main -lSDL2
+g_STB_IncludePath =F:/user/LaCpp/Package/stb

@@ -1,0 +1,10 @@
+
+
+function
+    stbi_load(filename)  => get data 
+    surface_load = create surface from data // current surface don't own data
+    surface_another = create surface according to surface_load msg
+    blt(surface_load -> surface_another)
+    free surface_load
+    return surface_another
+    
