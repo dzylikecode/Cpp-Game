@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "F:/user/La_Library/MinGW/SDL2-devel-2.0.16-mingw.tar/SDL2-devel-2.0.16-mingw/SDL2-2.0.16/x86_64-w64-mingw32/include/SDL2",
-                "F:/user/LaCpp/Package/stb"
+                "F:/user/LaCpp/Package/stb",
+                "Lib/"
             ],
             "defines": [
                 "_DEBUG",

@@ -8,3 +8,4 @@ s_OutputWindow ?=#-w -Wl,-subsystem,windows
 g_CompilerOptions =$(s_OutputWindow) -fdiagnostics-color=always -g 
 g_LinkOptions =-lmingw32 -lSDL2main -lSDL2
 g_STB_IncludePath =F:/user/LaCpp/Package/stb
+g_LIB_IncludePath =F:/Git_WorkSpace/LaCpp/SDL_Game/Lib

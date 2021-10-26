@@ -6,4 +6,6 @@
 
 ## issue
 > - launch.json set **cwd** = ***current Build Folder*** , otherwise it
-can't load bmp successfully
+can't load bmp successfully `(`from ***07_texture_loading_and_rendering***`)`
+> - launch.json set **cwd** = ***gdb path*** , otherwise it
+can't debug successfully `(`from ***08_geometry_rendering***`)`

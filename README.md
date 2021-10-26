@@ -6,10 +6,15 @@
 > 根据 ***[example](https://wiki.libsdl.org/SDL_CreateRGBSurfaceFrom)*** ，
 > 我决定使用 **[stb库](https://github.com/nothings/stb)** <br>
 > 另一个 ***[example](https://glumes.com/post/android/stb-image-introduce/)***
+
 ## 文件结构
 
 > ~~***`struct.km`***~~ ***`main.km`*** 以思维导图形式描述核心结构 <br>
 > ***`<funtionName>.txt`*** 伪代码形式描述算法
+
+## 构建库
+
+> 仿照stb库的 **[做法](https://github.com/nothings/stb/blob/master/docs/stb_howto.txt)** ，以 ***single-file library*** 形式做些封装
 
 ## 计划
 

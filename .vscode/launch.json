@@ -4,6 +4,8 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
+    
         {
             "name": "g++.exe - 生成和调试活动文件",
             "type": "cppdbg",
@@ -11,7 +13,9 @@
             "program": "${fileDirname}\\..\\Build\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}\\..\\Build",
+            //E:\\CPP\\mingw64\\bin
+            //${fileDirname}\\..\\Build
+            "cwd": "E:\\CPP\\mingw64\\bin", 
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
