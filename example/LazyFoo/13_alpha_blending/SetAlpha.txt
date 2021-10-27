@@ -1,0 +1,7 @@
+
+
+    load surface 
+    create render from surface
+    set render blending mode
+    set alpha
+    blt

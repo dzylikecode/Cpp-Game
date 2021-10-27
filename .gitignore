@@ -1,3 +1,5 @@
 example/LazyFoo/*/*.cpp
+example/LazyFoo/*/*.png
+example/LazyFoo/*/*.bmp
 example/LazyFoo/Build/
 !example/LazyFoo/07_texture_loading_and_rendering/07_texture_loading_and_rendering.cpp

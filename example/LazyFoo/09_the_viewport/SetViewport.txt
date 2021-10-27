@@ -1,0 +1,3 @@
+
+    set_viewport
+    copy_to_viewport //viewport 相当于一个窗口(在新的地方设置一个窗口)

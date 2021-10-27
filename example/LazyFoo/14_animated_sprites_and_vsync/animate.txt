@@ -1,0 +1,10 @@
+
+
+    render (x, y, clip[i])
+    i++
+
+<skill>:
+    clip[i/4] //这样可以达到每4个虚秒一帧
+    i++
+    if (i/4 > bound)
+        process
