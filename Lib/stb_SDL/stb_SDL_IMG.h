@@ -1,9 +1,6 @@
 #pragma once
 
 
-SDL_Surface *IMG_Load(const char *filename);
-
-
 #ifdef STB_SDL_IMG_IMPLEMENTATION
 #include <SDL.h>
 #define STB_IMAGE_IMPLEMENTATION
@@ -78,3 +75,6 @@ SDL_Surface *IMG_Load(const char *filename)
 }
 
 #endif
+
+#include <SDL.h>
+SDL_Surface *IMG_Load(const char *filename);
