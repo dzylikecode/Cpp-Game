@@ -1,0 +1,7 @@
+example/*/*.cpp
+example/*/*.h
+example/*/*.bmp
+example/*/*.png
+example/*/Makefile
+example/*/readme.txt
+example/main
