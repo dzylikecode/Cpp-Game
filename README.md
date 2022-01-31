@@ -46,3 +46,5 @@ and then execute it
 ## final
 
 I give up the branch, because I can't run the program 04 and 17 well.
+
+不过, 我还是像学习一下教程, 教程里面有些东西是与平台, 与实现方式无关的
