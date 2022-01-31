@@ -5,3 +5,4 @@ example/*/*.png
 example/*/Makefile
 example/*/readme.txt
 example/main
+!example/template/Makefile
