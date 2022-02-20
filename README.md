@@ -19,6 +19,10 @@ $ sudo apt-get install libsdl2-ttf-dev
 $ sudo apt-get install libsdl2-mixer-dev
 ```
 
+参考: [新版 SDL2](https://wiki.libsdl.org/Installation)
+
+发现不会安装扩展, 于是
+
 ## 卸载
 
 ```bash
@@ -41,6 +45,8 @@ and then execute it
 
 ## Wiki
 
+[all](https://wiki.libsdl.org/)
+
 [API](https://wiki.libsdl.org/APIByCategory)
 
 ## final
@@ -48,3 +54,11 @@ and then execute it
 I give up the branch, because I can't run the program 04 and 17 well.
 
 不过, 我还是像学习一下教程, 教程里面有些东西是与平台, 与实现方式无关的
+
+我解决了这个问题: 增加了编译选项
+
+```shell
+$ gcc `sdl2-config --cflags --libs` hello_SDL.c -o hello_SDL
+```
+
+so I can run it. haha
