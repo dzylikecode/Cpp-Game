@@ -17,6 +17,7 @@ $ sudo apt-get install libsdl2-dev
 $ sudo apt-get install libsdl2-image-dev
 $ sudo apt-get install libsdl2-ttf-dev
 $ sudo apt-get install libsdl2-mixer-dev
+$ sudo apt-get install libsdl2-net-dev
 ```
 
 参考: [新版 SDL2](https://wiki.libsdl.org/Installation)
@@ -30,6 +31,7 @@ $ sudo apt-get --purge remove libsdl2-dev
 $ sudo apt-get --purge remove libsdl2-image-dev
 $ sudo apt-get --purge remove libsdl2-ttf-dev
 $ sudo apt-get --purge remove libsdl2-mixer-dev
+$ sudo apt-get --purge remove libsdl2-net-dev
 ```
 
 只需要执行第一句就可以了, 其他的都会自动删除
@@ -45,9 +47,13 @@ and then execute it
 
 ## Wiki
 
+[main](https://www.libsdl.org/projects/)
+
 [all](https://wiki.libsdl.org/)
 
 [API](https://wiki.libsdl.org/APIByCategory)
+
+[extension docs](https://www.libsdl.org/projects/docs)
 
 ## final
 

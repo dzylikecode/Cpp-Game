@@ -4,5 +4,8 @@ example/*/*.bmp
 example/*/*.png
 example/*/Makefile
 example/*/readme.txt
+example/*/*.ttf
+example/*/*.wav
 example/main
 !example/template/Makefile
+temp/
