@@ -3,9 +3,12 @@
 #include <boost/numeric/ublas/matrix.hpp>
 
 #include "block.h"
+#include "paddle.h"
+#include "ball.h"
 
 const int screen_width = 600;
 const int screen_height = 400;
+
 
 using namespace boost::numeric::ublas;
 
@@ -26,36 +29,9 @@ void create_blocks(int rows, int cols)
     }
 }
 
-class Paddle
-{
-private:
-    sf::RectangleShape shape;
-
-public:
-    sf::Vector2f position;
-
-public:
-    bool create(sf::Vector2f position)
-    {
-        this->position = position;
-        shape.setSize(sf::Vector2f(100, 20));
-        shape.setFillColor(sf::Color::Blue);
-        shape.setPosition(position);
-        return true;
-    }
-    void set_position(float x, float y)
-    {
-        this->position.x = x;
-        this->position.y = y;
-        shape.setPosition(x, y);
-    }
-    void draw(sf::RenderWindow &window)
-    {
-        window.draw(shape);
-    }
-};
 
 Paddle paddle;
+Ball ball;
 
 int main(int argc, char *argv[])
 {
@@ -63,6 +39,7 @@ int main(int argc, char *argv[])
     window.setFramerateLimit(90);
 
     paddle.create(sf::Vector2f(screen_width / 2, screen_height - 20));
+    ball.create(sf::Vector2f(screen_width / 2, screen_height / 2), 5);
     while (window.isOpen())
     {
         sf::Event event;
@@ -78,17 +55,19 @@ int main(int argc, char *argv[])
                 {
                 case sf::Keyboard::A:
                 case sf::Keyboard::Left:
-                    paddle.set_position(paddle.position.x - 15, paddle.position.y);
+                    paddle.move_left();
                     break;
                 case sf::Keyboard::D:
                 case sf::Keyboard::Right:
-                    paddle.set_position(paddle.position.x + 15, paddle.position.y);
+                    paddle.move_right();
                     break;
                 }
             }
         }
+        ball.move();
         window.clear();
         paddle.draw(window);
+        ball.draw(window);
         window.display();
     }
     return 0;
