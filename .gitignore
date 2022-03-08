@@ -2,3 +2,4 @@ example/
 temp/
 test/
 bin/
+*.o
