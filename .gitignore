@@ -4,3 +4,4 @@ test/
 bin/
 *.o
 book/3Dgame/T3DIICHAP16
+!book/3Dgame/work_v1/example/

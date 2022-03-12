@@ -10,8 +10,8 @@ inline float DegToRad(float deg)
     return deg * M_PI / 180.0f;
 }
 
-const unsigned int WINDOW_WIDTH = 800;
-const unsigned int WINDOW_HEIGHT = 600;
+const unsigned int WINDOW_WIDTH = 640;
+const unsigned int WINDOW_HEIGHT = 480;
 
 int main()
 {
