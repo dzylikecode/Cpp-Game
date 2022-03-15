@@ -32,6 +32,10 @@ namespace hui
                 // notice that camera is looking at the negative z axis
                 m_dir = normalized(this->getPos() - m_look_at);
                 m_right = normalized(cross(m_up, m_dir));
+                if (mag(m_right) < 0.00001f)
+                {
+                    spdlog::error("m_up and m_dir are parallel");
+                }
                 m_up = normalized(cross(m_dir, m_right));
                 Mat4x4f rotate{
                     X(m_right), X(m_up), X(m_dir), 0,

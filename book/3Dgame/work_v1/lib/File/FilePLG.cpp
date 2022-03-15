@@ -65,6 +65,10 @@ namespace hui
                 {
                     continue;
                 }
+                if (line[line.length() - 1] == '\r') // remove the \r
+                {
+                    line.erase(line.length() - 1);
+                }
                 break;
             }
             return line;
@@ -86,7 +90,7 @@ namespace hui
                 return false;
             }
 
-            pattern = R"((\w+)\s+(\d+)\s+(\d+).*?)";
+            pattern = R"((\w+)\s+(\d+)\s+(\d+).*)";
             re.assign(pattern);
             if (!regex_match(line.c_str(), m, re))
             {
@@ -207,22 +211,23 @@ namespace hui
                     attr = std::stoi(m[1]);
                 }
 
-                if (attr & PLX_1SIDED_FLAG)
-                {
-                    m_poly[i].attr |= Poly_v1::Attribute::SIDED_SINGLE;
-                    spdlog::info("single sided");
-                }
-                else if (attr & PLX_2SIDED_FLAG)
+                if (attr & PLX_2SIDED_FLAG)
                 {
                     m_poly[i].attr |= Poly_v1::Attribute::SIDED_DOUBLE;
                     spdlog::info("double sided");
                 }
-                else
+                else /*if (attr & PLX_1SIDED_FLAG)*/
                 {
-                    spdlog::error("unknown polygon attribute");
-                    return false;
+                    m_poly[i].attr |= Poly_v1::Attribute::SIDED_SINGLE;
+                    spdlog::info("single sided");
                 }
+                // else
+                // {
+                //     spdlog::error("unknown polygon attribute");
+                //     return false;
+                // }
                 // this is an RGB 4.4.4 surface
+
                 if (attr & PLX_COLOR_MODE_RGB_FLAG)
                 {
                     spdlog::info("color mode: RGB 16 bit");
@@ -246,7 +251,7 @@ namespace hui
                                  m_poly[i].color.g,
                                  m_poly[i].color.b);
                 }
-                else if (attr & PLX_COLOR_MODE_INDEXED_FLAG)
+                else /*if (attr & PLX_COLOR_MODE_INDEXED_FLAG)*/
                 {
                     spdlog::info("color mode: RGBA 8 bit");
 #define PLX_INDEXED_RED_8_MASK 0xE0
@@ -267,11 +272,11 @@ namespace hui
                                  m_poly[i].color.g,
                                  m_poly[i].color.b);
                 }
-                else
-                {
-                    spdlog::error("unknown color mode");
-                    return false;
-                }
+                // else
+                // {
+                //     spdlog::error("unknown color mode");
+                //     return false;
+                // }
 
                 auto shade = attr & PLX_SHADE_MODE_MASK;
                 switch (shade)

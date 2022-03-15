@@ -68,8 +68,9 @@ namespace hui
             {
                 auto far = -m_camera->getFar(); // 看向的是负半轴
                 auto near = -m_camera->getNear();
-                if (z + getMaxRadius() > near ||
-                    z - getMaxRadius() < far) // 负的更多,超出视野
+                // 此时 z 就是负值
+                if (z + getMaxRadius() < far || // 负的更多,超出视野
+                    z - getMaxRadius() > near)
                 {
                     m_attribite |= CULL_Z;
                 }
@@ -145,6 +146,7 @@ namespace hui
             for (auto &v : m_tranformed.m_vert)
             {
                 auto pos3D = m_camera->getTransformationMatrix() * XYZ1(v);
+                v = XYZ(pos3D);
                 auto pos2D = XY(pos3D) / W(pos3D);
                 Vertex tmp_2D;
                 tmp_2D.position = Vector2f(

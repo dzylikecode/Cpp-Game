@@ -1,18 +1,12 @@
-#ifndef HUI_CAMERA_FOCUS_H
-#define HUI_CAMERA_FOCUS_H
 #include "Camera/CameraBasic.h"
 
 namespace hui
 {
     namespace triD
     {
-        class CameraFocus_v1 : public CameraBasic_v1
+        class CameraEuler_v1 : public CameraBasic_v1
         {
         private:
-            Vec3f m_look_at;
-            Vec3f m_dir;
-            Vec3f m_up;
-            Vec3f m_right;
             bool m_dirty;
             Mat4x4f m_transformation;
             unsigned int m_width;
@@ -21,13 +15,7 @@ namespace hui
 
         public:
             virtual const Mat4x4f &getTransformationMatrix();
-            virtual const Mat4x4f &getTransformationMatrix() const { return const_cast<CameraFocus_v1 *>(this)->getTransformationMatrix(); }
-            void setLookAt(const Vec3f &look_at);
-            void setUp(const Vec3f &up);
-            const Vec3f &getLookAt() const { return m_look_at; }
-            const Vec3f &getUp() const;
-            const Vec3f &getRight() const;
-            const Vec3f &getDir() const;
+            virtual const Mat4x4f &getTransformationMatrix() const { return const_cast<CameraEuler_v1 *>(this)->getTransformationMatrix(); }
             const unsigned int getWidth() const { return m_width; }
             const unsigned int getHeight() const { return m_height; }
             float getViewDist() const;
@@ -36,4 +24,3 @@ namespace hui
         };
     }
 }
-#endif

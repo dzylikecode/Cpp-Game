@@ -101,7 +101,7 @@ namespace hui
             };
 
         private:
-            const CameraFocus_v1 *m_camera;
+            const CameraBasic_v1 *m_camera;
             Attribite m_attribite;
             const Data3D_v2 *m_model;
             Data3D_v2 m_tranformed;
@@ -111,7 +111,7 @@ namespace hui
 
         public:
             Geometric_v2() : m_camera(nullptr), m_attribite(ATTR_NONE){};
-            void setCamera(const CameraFocus_v1 &camera) { m_camera = &camera; }
+            void setCamera(const CameraBasic_v1 &camera) { m_camera = &camera; }
             // Data3D_v2 需要与 Geometric_v2 共存
             bool loadFromData(const Data3D_v2 &data);
             float getMaxRadius() const { return m_model->getMaxRadius(); }

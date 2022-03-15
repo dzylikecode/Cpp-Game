@@ -1,9 +1,13 @@
 bin=../../bin
 name?=load_plg
+a?=
+b?=-tui
 ###############################################################################
 # target
 ###############################################################################
 target_name=$(bin)/$(name)
+target_args?=$(a)
+gdb_args?=$(b)
 
 default: all
 
@@ -57,10 +61,10 @@ $(target_name): $(object_files)
 all: $(target_name) cleardep
 
 run: all
-	$(target_name)
+	$(target_name) $(target_args)
 	
 gdb: all
-	gdb $(target_name) 
+	gdb $(target_name) $(gdb_args)
 
 
 ###############################################################################
