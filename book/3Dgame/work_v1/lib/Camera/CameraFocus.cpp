@@ -39,28 +39,45 @@ namespace hui
                     Z(m_right), Z(m_up), Z(m_dir), 0,
                     0, 0, 0, 1};
                 this->setRotate(rotate);
-                m_transformation = Perspective::getTransformationMatrix() *
-                                   this->getLocalMatrix();
+                auto &pers_mat = Perspective::getTransformationMatrix();
+                m_transformation = pers_mat * this->getLocalMatrix();
+                m_view_dist = std::abs(A<1, 1>(pers_mat)) * m_width / 2.0f;
                 m_dirty = false;
             }
             return m_transformation;
         }
-        const Vec3f &CameraFocus_v1::getUp()
+        const Vec3f &CameraFocus_v1::getUp() const
         {
-            getTransformationMatrix();
+            const_cast<CameraFocus_v1 *>(this)->getTransformationMatrix();
             return m_up;
         }
 
-        const Vec3f &CameraFocus_v1::getRight()
+        const Vec3f &CameraFocus_v1::getRight() const
         {
-            getTransformationMatrix();
+            const_cast<CameraFocus_v1 *>(this)->getTransformationMatrix();
             return m_right;
         }
 
-        const Vec3f &CameraFocus_v1::getDir()
+        const Vec3f &CameraFocus_v1::getDir() const
         {
-            getTransformationMatrix();
+            const_cast<CameraFocus_v1 *>(this)->getTransformationMatrix();
             return m_dir;
+        }
+
+        void CameraFocus_v1::setSize(unsigned int width, unsigned int height)
+        {
+            if (m_width != width || m_height != height)
+            {
+                m_width = width;
+                m_height = height;
+                setAspect(static_cast<float>(width) / static_cast<float>(height));
+            }
+        }
+
+        float CameraFocus_v1::getViewDist() const
+        {
+            const_cast<CameraFocus_v1 *>(this)->getTransformationMatrix();
+            return m_view_dist;
         }
     }
 }

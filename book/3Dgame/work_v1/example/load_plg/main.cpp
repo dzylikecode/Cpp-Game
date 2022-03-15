@@ -1,25 +1,6 @@
-/**
- * @file main.cpp
- * @author your name (you@domain.com)
- * @brief   using right coordinate system:
- * 
- *          up arrow key -> rotate y axis
- *          down arrow key -> rotate z axis
- *          right arrow key -> rotate z axis
- *
- * @version 0.1
- * @date 2022-03-13
- *
- * @copyright Copyright (c) 2022
- *
- */
-
-#include "basic.hpp"
-#include "Camera/Camera.hpp"
-#include "Geometric/Geometric.hpp"
+#include "File/File3D.hpp"
 #include <iostream>
-#include <sstream>
-#include <cmath>
+#include "Geometric/Geometric.hpp"
 
 inline float DegToRad(float deg)
 {
@@ -31,6 +12,8 @@ const unsigned int WINDOW_HEIGHT = 480;
 
 int main()
 {
+    using namespace std;
+    using namespace hui::triD;
     using namespace hui::triD;
     using namespace std;
     CameraFocus_v1 camera;
@@ -40,18 +23,15 @@ int main()
     camera.setFar(500);
     camera.setNear(50);
     camera.setFov(DegToRad(90));
-    camera.setAspect(WINDOW_WIDTH / (float)WINDOW_HEIGHT);
-    Geometric_v1 tri;
-    tri.setCamera(camera);
-    tri.setPos(Vec3f{0, 0, 0});
-    tri.resize(3);
-    tri.m_vert[0] = Vec3f{0, 50, 0};
-    tri.m_vert[1] = Vec3f{50, -50, 0};
-    tri.m_vert[2] = Vec3f{-50, -50, 0};
-    tri.m_vert_array.setPrimitiveType(sf::Triangles);
-    tri.m_vert_array[0].color = Color::Red;
-    tri.m_vert_array[1].color = Color::Green;
-    tri.m_vert_array[2].color = Color::Blue;
+    camera.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+    FilePLG file;
+    file.open("cube1.plg");
+    Data3D_v2 data = file.getData();
+    data.scaleShape(5);
+    Geometric_v2 geo;
+    geo.loadFromData(data);
+    geo.setCamera(camera);
+    geo.setPos(Vec3f{0, 0, 0});
 
     Geometric_v1 x_axis;
     x_axis.setCamera(camera);
@@ -83,16 +63,10 @@ int main()
     z_axis.m_vert_array[0].color = Color::Blue;
     z_axis.m_vert_array[1].color = Color::Blue;
 
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML window 3D");
+    RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "3D");
     window.setFramerateLimit(60);
+    float x_ang = 0, y_ang = 2, z_ang = 0;
 
-    int angle = 0;
-    enum
-    {
-        X_AXIS,
-        Y_AXIS,
-        Z_AXIS,
-    } mode = Y_AXIS;
     while (window.isOpen())
     {
         sf::Event event;
@@ -102,32 +76,28 @@ int main()
                 window.close();
             if (event.type == sf::Event::KeyPressed)
             {
-                if (event.key.code == sf::Keyboard::Escape)
-                    window.close();
-                if (event.key.code == sf::Keyboard::Up)
-                    mode = Y_AXIS;
                 if (event.key.code == sf::Keyboard::Down)
-                    mode = Z_AXIS;
-                if (event.key.code == sf::Keyboard::Right)
-                    mode = X_AXIS;
+                    x_ang += 1;
+                else if (event.key.code == sf::Keyboard::Up)
+                    x_ang += -1;
+                else if (event.key.code == sf::Keyboard::Left)
+                    z_ang += 1;
+                else if (event.key.code == sf::Keyboard::Right)
+                    z_ang += -1;
             }
         }
-        ++angle;
-        if (angle > 360)
-            angle = 0;
-        if (mode == X_AXIS)
-            tri.setRotate(rotx_mat<4>(DegToRad(angle)));
-        if (mode == Y_AXIS)
-            tri.setRotate(roty_mat<4>(DegToRad(angle)));
-        if (mode == Z_AXIS)
-            tri.setRotate(rotz_mat<4>(DegToRad(angle)));
+        y_ang += 2;
+        if (y_ang > 360)
+            y_ang -= 360;
+        geo.setRotate(rot_mat_xyz<4>(DegToRad(x_ang),
+                                     DegToRad(y_ang),
+                                     DegToRad(z_ang)));
         window.clear();
-        window.draw(tri);
         window.draw(x_axis);
         window.draw(y_axis);
         window.draw(z_axis);
+        window.draw(geo);
         window.display();
     }
-
     return 0;
 }

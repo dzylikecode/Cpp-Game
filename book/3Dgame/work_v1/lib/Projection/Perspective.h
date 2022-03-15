@@ -19,6 +19,7 @@ namespace hui
 
         public:
             virtual const Mat4x4f &getTransformationMatrix();
+            virtual const Mat4x4f &getTransformationMatrix() const { return const_cast<Perspective *>(this)->getTransformationMatrix(); }
             void setFov(float fov);
             void setNear(float near);
             void setFar(float far);

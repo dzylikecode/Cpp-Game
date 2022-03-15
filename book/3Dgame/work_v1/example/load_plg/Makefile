@@ -1,0 +1,101 @@
+bin=../../bin
+name?=load_plg
+###############################################################################
+# target
+###############################################################################
+target_name=$(bin)/$(name)
+
+default: all
+
+###############################################################################
+# source file
+###############################################################################
+source_files=$(shell find -L . -type f -name '*.cpp')
+source_files+=$(shell find -L ../../lib -type f -name '*.cpp')
+source_files+=$(shell find -L ../../object -type f -name '*.cpp')
+
+###############################################################################
+# header
+###############################################################################
+include_options=-I. -I../../lib -I../..
+
+###############################################################################
+# link
+###############################################################################
+link_options=-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -g
+
+
+
+
+###############################################################################
+# object file
+###############################################################################
+tmp_object_files=$(source_files:.cpp=.o)
+tmp_object_files_without_path=$(notdir $(tmp_object_files))
+object_files=$(addprefix $(bin)/,$(tmp_object_files_without_path))
+###############################################################################
+# 针对每个 obj 文件生成的编译选项
+###############################################################################
+obj_options = -g
+
+%.o: 
+	g++ -c -o $@ $(shell \
+	echo "$(source_files)" | \
+	grep -P "\S*?$(basename $(notdir $@)).cpp" -o\
+	) $(include_options) $(obj_options)
+
+###############################################################################
+# link
+###############################################################################
+$(target_name): $(object_files) 
+	g++ -o $(target_name) $^ $(link_options)
+
+###############################################################################
+# command
+###############################################################################
+
+all: $(target_name) cleardep
+
+run: all
+	$(target_name)
+	
+gdb: all
+	gdb $(target_name) 
+
+
+###############################################################################
+# depend file
+###############################################################################
+depend_file=$(source_files:.cpp=.d)
+
+
+include $(depend_file)
+
+# 1.remove old dependency file
+# 2.generate new dependency to $@.temp file
+# 3.grep the first line of $@.temp file and write to $@
+# 4.append the rest of $@.temp file to $@
+# 5.remove $@.temp file
+%.d: %.cpp
+	-@rm -f $@ 
+	@g++ -MM $(include_options) $< > $@.temp
+	@echo $(bin)/$(basename $(notdir $@)).o `cat $@.temp | grep -P ":.*" -o` > $@
+	@cat $@.temp | tail -n +2 >> $@
+	@rm -f $@.temp
+
+###############################################################################
+# clear
+###############################################################################
+clear:
+	-rm -f $(object_files)
+
+clearall: clear cleardep
+	-rm -f $(target_name)
+
+cleardep:
+	@rm -f $(depend_file)
+
+###############################################################################
+# .PHONY
+###############################################################################
+.PHONY: all run clear clearall cleardep gdb default

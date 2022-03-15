@@ -1,5 +1,5 @@
-#ifndef HUI_GEOMETRIC_H
-#define HUI_GEOMETRIC_H
+#ifndef HUI_GEOMETRIC_V1_H
+#define HUI_GEOMETRIC_V1_H
 
 #include "basic.hpp"
 #include "Camera/Camera.hpp"
