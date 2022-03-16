@@ -1,0 +1,339 @@
+g++ -c -o ../../bin/main.o ./main.cpp -I. -I../../lib -I../.. -g -DHUI_DEBUG
+g++ -o ../../bin/load_plg ../../bin/main.o ../../bin/Perspective.o ../../bin/Geometric_v2.o ../../bin/Geometric_v1.o ../../bin/CameraFocus.o ../../bin/CameraEuler.o ../../bin/Mobject_v1.o ../../bin/FilePLG.o ../../bin/triangle.o -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -g
+../../bin/load_plg 
+[2022-03-16 17:24:31.817] [info] object descriptor: 
+name: slider 
+vert: 21 
+poly: 19 
+
+[2022-03-16 17:24:31.819] [info] vertex data: 
+x: -30.0 
+y: 50.0 
+z: -90.0 
+
+[2022-03-16 17:24:31.821] [info] vertex data: 
+x: 30.0 
+y: 50.0 
+z: -90.0 
+
+[2022-03-16 17:24:31.822] [info] vertex data: 
+x: 20.0 
+y: 20.0 
+z: 40.0 
+
+[2022-03-16 17:24:31.824] [info] vertex data: 
+x: -20.0 
+y: 20.0 
+z: 40.0 
+
+[2022-03-16 17:24:31.825] [info] vertex data: 
+x: -20.0 
+y: 20.0 
+z: -80.0 
+
+[2022-03-16 17:24:31.827] [info] vertex data: 
+x: 20.0 
+y: 20.0 
+z: -80.0 
+
+[2022-03-16 17:24:31.829] [info] vertex data: 
+x: -20.0 
+y: 60.0 
+z: -50.0 
+
+[2022-03-16 17:24:31.830] [info] vertex data: 
+x: 20.0 
+y: 60.0 
+z: -50.0 
+
+[2022-03-16 17:24:31.832] [info] vertex data: 
+x: -25.0 
+y: 50.0 
+z: -30.0 
+
+[2022-03-16 17:24:31.833] [info] vertex data: 
+x: 25.0 
+y: 50.0 
+z: -30.0 
+
+[2022-03-16 17:24:31.835] [info] vertex data: 
+x: -40.0 
+y: 30.0 
+z: -100.0 
+
+[2022-03-16 17:24:31.836] [info] vertex data: 
+x: -30.0 
+y: 10.0 
+z: 100.0 
+
+[2022-03-16 17:24:31.838] [info] vertex data: 
+x: -70.0 
+y: 0.0 
+z: -30.0 
+
+[2022-03-16 17:24:31.839] [info] vertex data: 
+x: -70.0 
+y: 0.0 
+z: -80.0 
+
+[2022-03-16 17:24:31.841] [info] vertex data: 
+x: 40.0 
+y: 30.0 
+z: -100.0 
+
+[2022-03-16 17:24:31.842] [info] vertex data: 
+x: 70.0 
+y: 0.0 
+z: -80.0 
+
+[2022-03-16 17:24:31.844] [info] vertex data: 
+x: 70.0 
+y: 0.0 
+z: -30.0 
+
+[2022-03-16 17:24:31.846] [info] vertex data: 
+x: 30.0 
+y: 10.0 
+z: 100.0 
+
+[2022-03-16 17:24:31.847] [info] vertex data: 
+x: 0.0 
+y: 70.0 
+z: -70.0 
+
+[2022-03-16 17:24:31.849] [info] vertex data: 
+x: 0.0 
+y: 70.0 
+z: 20.0 
+
+[2022-03-16 17:24:31.850] [info] vertex data: 
+x: 0.0 
+y: 90.0 
+z: -100.0 
+
+[2022-03-16 17:24:31.850] [info] 
+max radius: 134.53624 
+avg radius: 89.28151 
+
+[2022-03-16 17:24:31.853] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 2 
+v1: 9 
+v2: 1 
+
+[2022-03-16 17:24:31.853] [info] double sided
+[2022-03-16 17:24:31.853] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.853] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.853] [info] shade mode: gouraud
+[2022-03-16 17:24:31.854] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 2 
+v1: 1 
+v2: 5 
+
+[2022-03-16 17:24:31.854] [info] double sided
+[2022-03-16 17:24:31.854] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.854] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.854] [info] shade mode: gouraud
+[2022-03-16 17:24:31.856] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 1 
+v1: 0 
+v2: 4 
+
+[2022-03-16 17:24:31.856] [info] double sided
+[2022-03-16 17:24:31.856] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.856] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.856] [info] shade mode: gouraud
+[2022-03-16 17:24:31.858] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 1 
+v1: 4 
+v2: 5 
+
+[2022-03-16 17:24:31.858] [info] double sided
+[2022-03-16 17:24:31.858] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.858] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.858] [info] shade mode: gouraud
+[2022-03-16 17:24:31.860] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 0 
+v1: 8 
+v2: 3 
+
+[2022-03-16 17:24:31.860] [info] double sided
+[2022-03-16 17:24:31.860] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.860] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.860] [info] shade mode: gouraud
+[2022-03-16 17:24:31.861] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 0 
+v1: 3 
+v2: 4 
+
+[2022-03-16 17:24:31.861] [info] double sided
+[2022-03-16 17:24:31.861] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.861] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.861] [info] shade mode: gouraud
+[2022-03-16 17:24:31.863] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 2 
+v1: 3 
+v2: 8 
+
+[2022-03-16 17:24:31.863] [info] double sided
+[2022-03-16 17:24:31.863] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.863] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.863] [info] shade mode: gouraud
+[2022-03-16 17:24:31.864] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 2 
+v1: 8 
+v2: 9 
+
+[2022-03-16 17:24:31.864] [info] double sided
+[2022-03-16 17:24:31.864] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.864] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.864] [info] shade mode: gouraud
+[2022-03-16 17:24:31.866] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 6 
+v1: 7 
+v2: 9 
+
+[2022-03-16 17:24:31.866] [info] double sided
+[2022-03-16 17:24:31.866] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.866] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.866] [info] shade mode: gouraud
+[2022-03-16 17:24:31.868] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 6 
+v1: 9 
+v2: 8 
+
+[2022-03-16 17:24:31.868] [info] double sided
+[2022-03-16 17:24:31.868] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.868] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.868] [info] shade mode: gouraud
+[2022-03-16 17:24:31.869] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 0 
+v1: 1 
+v2: 7 
+
+[2022-03-16 17:24:31.869] [info] double sided
+[2022-03-16 17:24:31.869] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.869] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.869] [info] shade mode: gouraud
+[2022-03-16 17:24:31.871] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 0 
+v1: 7 
+v2: 6 
+
+[2022-03-16 17:24:31.871] [info] double sided
+[2022-03-16 17:24:31.871] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.871] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.871] [info] shade mode: gouraud
+[2022-03-16 17:24:31.873] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 0 
+v1: 6 
+v2: 8 
+
+[2022-03-16 17:24:31.873] [info] double sided
+[2022-03-16 17:24:31.873] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.873] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.873] [info] shade mode: gouraud
+[2022-03-16 17:24:31.874] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 1 
+v1: 9 
+v2: 7 
+
+[2022-03-16 17:24:31.874] [info] double sided
+[2022-03-16 17:24:31.874] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.874] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.874] [info] shade mode: gouraud
+[2022-03-16 17:24:31.876] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 10 
+v1: 11 
+v2: 12 
+
+[2022-03-16 17:24:31.876] [info] double sided
+[2022-03-16 17:24:31.876] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.876] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.876] [info] shade mode: gouraud
+[2022-03-16 17:24:31.878] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 10 
+v1: 12 
+v2: 13 
+
+[2022-03-16 17:24:31.878] [info] double sided
+[2022-03-16 17:24:31.878] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.878] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.878] [info] shade mode: gouraud
+[2022-03-16 17:24:31.880] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 14 
+v1: 15 
+v2: 16 
+
+[2022-03-16 17:24:31.880] [info] double sided
+[2022-03-16 17:24:31.880] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.880] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.880] [info] shade mode: gouraud
+[2022-03-16 17:24:31.881] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 14 
+v1: 16 
+v2: 17 
+
+[2022-03-16 17:24:31.881] [info] double sided
+[2022-03-16 17:24:31.881] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.881] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.881] [info] shade mode: gouraud
+[2022-03-16 17:24:31.883] [info] polygon data: 
+surface: 0xdfff 
+num vert: 3 
+v0: 20 
+v1: 19 
+v2: 18 
+
+[2022-03-16 17:24:31.883] [info] double sided
+[2022-03-16 17:24:31.883] [info] color mode: RGB 16 bit
+[2022-03-16 17:24:31.883] [info] color: [r: 240 g: 240 b: 240]
+[2022-03-16 17:24:31.883] [info] shade mode: gouraud
+y_cam_ang = 0
+[ 0.75, 0, 0, 0;
+  0, 1, 0, -200;
+  0, 0, -1.05263, 368.421;
+  0, 0, -1, 400 ]
+y_cam_ang = 40
+y_cam_ang = 40
+[ 0.574533, 0, -0.482091, 192.836;
+  0, 1, 0, -200;
+  -0.676619, 0, -0.806363, 269.913;
+  -0.642788, 0, -0.766045, 306.418 ]
+y_cam_ang = 40
+y_cam_ang = 40

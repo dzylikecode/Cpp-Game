@@ -4,7 +4,7 @@ namespace hui
 {
     namespace triD
     {
-        Mobject_v1::Mobject_v1() : m_dirty(true)
+        Mobject_v1::Mobject_v1() : m_dirty(false), m_changed(false)
         {
             set_identity(m_translate);
             set_identity(m_rotate);
@@ -16,6 +16,7 @@ namespace hui
                 m_pos = pos;
                 m_translate = translation_mat(m_pos);
                 m_dirty = true;
+                m_changed = true;
             }
         }
         void Mobject_v1::setRotate(const Mat4x4f &rotate)
@@ -24,9 +25,10 @@ namespace hui
             {
                 m_rotate = rotate;
                 m_dirty = true;
+                m_changed = true;
             }
         }
-        const Mat4x4f &Mobject_v1::getLocalMatrix()
+        const Mat4x4f &Mobject_v1::localMat()
         {
             if (this->isDirty())
             {
@@ -39,10 +41,11 @@ namespace hui
                 // 二者是一致的
                 m_local = inverse(m_world);
                 m_dirty = false;
+                m_changed = clsDirty();
             }
             return m_local;
         }
-        const Mat4x4f &Mobject_v1::getWorldMatrix()
+        const Mat4x4f &Mobject_v1::worldMat()
         {
             getLocalMatrix();
             return m_world;

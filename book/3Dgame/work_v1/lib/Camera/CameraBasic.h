@@ -15,7 +15,10 @@ namespace hui
             virtual const unsigned int getHeight() const = 0;
             virtual float getViewDist() const = 0;
             virtual void setSize(unsigned int width, unsigned int height) = 0;
-            virtual bool isDirty() const { return Perspective::isDirty() || Mobject_v1::isDirty(); }
+
+        protected:
+            bool isDirtySub() const { return Perspective::isDirtySub() || Mobject_v1::isDirtySub(); }
+            bool clsDirtySub() { return Perspective::clsDirtySub() && Mobject_v1::clsDirtySub(); }
         };
     }
 }

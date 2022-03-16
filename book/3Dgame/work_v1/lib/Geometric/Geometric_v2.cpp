@@ -158,7 +158,6 @@ namespace hui
 
         void Geometric_v2::draw(RenderTarget &target, RenderStates states) const
         {
-            const_cast<Geometric_v2 *>(this)->process3D();
             if (m_attribite & CULLED)
                 return;
             for (auto &sur : m_tranformed.m_poly)

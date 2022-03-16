@@ -96,13 +96,25 @@ int main(int argc, char *argv[])
                 if (event.key.code == sf::Keyboard::Escape)
                     window.close();
                 if (event.key.code == sf::Keyboard::Down)
+                {
                     x_ang += 1;
+                    std::cout << "x_ang = " << x_ang << std::endl;
+                }
                 else if (event.key.code == sf::Keyboard::Up)
+                {
                     x_ang += -1;
+                    std::cout << "x_ang = " << x_ang << std::endl;
+                }
                 else if (event.key.code == sf::Keyboard::Left)
+                {
                     z_ang += 1;
+                    std::cout << "z_ang = " << z_ang << std::endl;
+                }
                 else if (event.key.code == sf::Keyboard::Right)
+                {
                     z_ang += -1;
+                    std::cout << "z_ang = " << z_ang << std::endl;
+                }
                 if (event.key.code == sf::Keyboard::Space)
                 {
                     x_ang = 0;
@@ -111,23 +123,70 @@ int main(int argc, char *argv[])
                     y_cam_ang = 0;
                 }
                 if (event.key.code == sf::Keyboard::A)
+                {
                     y_cam_ang += 1;
+                    std::cout << "y_cam_ang = " << y_cam_ang << std::endl;
+                }
                 else if (event.key.code == sf::Keyboard::D)
+                {
                     y_cam_ang += -1;
+                    std::cout << "y_cam_ang = " << y_cam_ang << std::endl;
+                }
             }
         }
         y_ang += 2;
         if (y_ang > 360)
+        {
             y_ang -= 360;
+#ifdef HUI_DEBUG
+            y_cam_ang = 40;
+            std::cout << "y_cam_ang = " << y_cam_ang << std::endl;
+#endif
+        }
         geo.setRotate(rot_mat_xyz<4>(DegToRad(x_ang),
                                      DegToRad(y_ang),
                                      DegToRad(z_ang)));
         camera.setRotate(rot_mat_xyz<4, float>(0, DegToRad(y_cam_ang), 0));
         window.clear();
-        window.draw(x_axis);
-        window.draw(y_axis);
-        window.draw(z_axis);
+        // window.draw(x_axis);
+        // window.draw(y_axis);
+        // window.draw(z_axis);
+        geo.update();
         window.draw(geo);
+
+#ifdef HUI_DEBUG
+        auto func = [&]()
+        {
+            static bool flag = true;
+
+            std::cout << "y_cam_ang = " << y_cam_ang << std::endl;
+            // for (auto &v : geo.m_tranformed.m_vert)
+            // {
+            //     std::cout << "v: " << X(v) << " "
+            //               << Y(v) << " " << Z(v) << std::endl;
+            // }
+            std::cout << camera.getTransformationMatrix() << std::endl;
+        };
+        if (y_cam_ang == 0)
+        {
+            static bool flag = true;
+            if (flag)
+            {
+                func();
+                flag = false;
+            }
+        }
+
+        if (y_cam_ang == 40)
+        {
+            static bool flag = true;
+            if (flag)
+            {
+                func();
+                flag = false;
+            }
+        }
+#endif
         window.display();
     }
     return 0;

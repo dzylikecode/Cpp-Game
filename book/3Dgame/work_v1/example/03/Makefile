@@ -2,12 +2,14 @@ bin=../../bin
 name?=load_plg
 a?=
 b?=-tui
+c?=
 ###############################################################################
 # target
 ###############################################################################
 target_name=$(bin)/$(name)
 target_args?=$(a)
 gdb_args?=$(b)
+gcc_args?=$(c)
 
 default: all
 
@@ -46,7 +48,7 @@ obj_options = -g
 	g++ -c -o $@ $(shell \
 	echo "$(source_files)" | \
 	grep -P "\S*?$(basename $(notdir $@)).cpp" -o\
-	) $(include_options) $(obj_options)
+	) $(include_options) $(obj_options) $(gcc_args)
 
 ###############################################################################
 # link

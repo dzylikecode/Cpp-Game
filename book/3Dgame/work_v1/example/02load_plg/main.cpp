@@ -133,6 +133,7 @@ int main(int argc, char *argv[])
                     y_pos += -5;
             }
         }
+
         y_ang += 2;
         if (y_ang > 360)
             y_ang -= 360;
@@ -140,6 +141,7 @@ int main(int argc, char *argv[])
                                      DegToRad(y_ang),
                                      DegToRad(z_ang)));
         camera.setPos(Vec3f{x_pos, y_pos, z_pos});
+        geo.update();
         window.clear();
         window.draw(x_axis);
         window.draw(y_axis);

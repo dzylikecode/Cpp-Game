@@ -33,8 +33,6 @@ namespace hui
         public:
             virtual const Mat4x4f &getLocalMatrix() const = 0;
             virtual const Mat4x4f &getWorldMatrix() const = 0;
-            virtual const Mat4x4f &getLocalMatrix() = 0;
-            virtual const Mat4x4f &getWorldMatrix() = 0;
         };
 
         // such as: projection matrix
@@ -42,7 +40,6 @@ namespace hui
         {
         public:
             virtual const Mat4x4f &getTransformationMatrix() const = 0;
-            virtual const Mat4x4f &getTransformationMatrix() = 0;
         };
 
         template <class T>

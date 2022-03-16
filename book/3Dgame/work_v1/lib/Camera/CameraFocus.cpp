@@ -6,6 +6,17 @@ namespace hui
 {
     namespace triD
     {
+        CameraFocus_v1::CameraFocus_v1() : m_look_at{0.0f, 0.0f, 0.0f},
+                                           m_dir{0.0f, 0.0f, 0.0f},
+                                           m_up{0.0f, 0.0f, 0.0f},
+                                           m_right{0.0f, 0.0f, 0.0f},
+                                           m_dirty(false),
+                                           m_changed(false),
+                                           m_width(0),
+                                           m_height(0),
+                                           m_view_dist(0.0f)
+        {
+        }
 
         void CameraFocus_v1::setLookAt(const Vec3f &look_at)
         {
@@ -25,7 +36,7 @@ namespace hui
             }
         }
 
-        const Mat4x4f &CameraFocus_v1::getTransformationMatrix()
+        const Mat4x4f &CameraFocus_v1::transMat()
         {
             if (this->isDirty())
             {

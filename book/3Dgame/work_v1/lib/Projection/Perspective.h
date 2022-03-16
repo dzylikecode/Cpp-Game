@@ -16,10 +16,10 @@ namespace hui
             float m_far;
             float m_aspect;
             bool m_dirty;
+            bool m_changed;
 
         public:
-            virtual const Mat4x4f &getTransformationMatrix();
-            virtual const Mat4x4f &getTransformationMatrix() const { return const_cast<Perspective *>(this)->getTransformationMatrix(); }
+            virtual const Mat4x4f &getTransformationMatrix() const { return const_cast<Perspective *>(this)->transMat(); }
             void setFov(float fov);
             void setNear(float near);
             void setFar(float far);
@@ -28,7 +28,16 @@ namespace hui
             float getNear() const { return m_near; }
             float getFar() const { return m_far; }
             float getAspect() const { return m_aspect; }
-            virtual bool isDirty() const { return m_dirty; }
+
+        protected:
+            bool clsDirtySub() { return !(m_changed = false); } // yes, equal
+            bool isDirtySub() const { return m_changed; }
+
+            
+        private:
+            const Mat4x4f &transMat();
+            bool isDirty() const { return m_dirty; }
+            bool clsDirty() { return true; }
         };
     }
 }

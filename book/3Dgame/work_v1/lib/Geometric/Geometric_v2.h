@@ -103,6 +103,9 @@ namespace hui
         private:
             const CameraBasic_v1 *m_camera;
             Attribite m_attribite;
+#ifdef HUI_DEBUG
+        public:
+#endif
             const Data3D_v2 *m_model;
             Data3D_v2 m_tranformed;
 
@@ -116,6 +119,7 @@ namespace hui
             bool loadFromData(const Data3D_v2 &data);
             float getMaxRadius() const { return m_model->getMaxRadius(); }
             float getAvgRadius() const { return m_model->getAvgRadius(); }
+            void update() { process3D(); }
 
         private:
             virtual void draw(RenderTarget &target, RenderStates states) const;
