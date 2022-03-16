@@ -120,6 +120,7 @@ namespace hui
             float getMaxRadius() const { return m_model->getMaxRadius(); }
             float getAvgRadius() const { return m_model->getAvgRadius(); }
             void update() { process3D(); }
+            bool isCulled() const { return m_attribite & CULLED; }
 
         private:
             virtual void draw(RenderTarget &target, RenderStates states) const;
