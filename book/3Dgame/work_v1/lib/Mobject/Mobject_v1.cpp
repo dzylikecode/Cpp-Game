@@ -6,7 +6,7 @@ namespace hui
     {
         Mobject_v1::Mobject_v1() : m_dirty(false), m_changed(false)
         {
-            set_identity(m_translate);
+            set_zero(m_translate);
             set_identity(m_rotate);
         }
         void Mobject_v1::setPos(const Vec3f &pos)

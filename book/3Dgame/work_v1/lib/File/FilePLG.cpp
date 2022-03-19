@@ -30,6 +30,28 @@
 #define PLX_SHADE_MODE_PHONG_FLAG 0x6000     // this poly uses phong shading
 #define PLX_SHADE_MODE_FASTPHONG_FLAG 0x6000 // this poly uses phong shading (alias)
 
+namespace
+{
+    const std::string WHITESPACE = " \n\r\t\f\v";
+
+    std::string ltrim(const std::string &s)
+    {
+        size_t start = s.find_first_not_of(WHITESPACE);
+        return (start == std::string::npos) ? "" : s.substr(start);
+    }
+
+    std::string rtrim(const std::string &s)
+    {
+        size_t end = s.find_last_not_of(WHITESPACE);
+        return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+    }
+
+    std::string trim(const std::string &s)
+    {
+        return rtrim(ltrim(s));
+    }
+}
+
 namespace hui
 {
     namespace triD
@@ -56,9 +78,10 @@ namespace hui
                 std::getline(m_file, line);
 
                 // skip the heading blank space
-                pattern = R"(^\s*?(?=\S))";
-                re.assign(pattern);
-                line = regex_replace(line, re, "");
+                // pattern = R"(^\s*(?=\S))";
+                // re.assign(pattern);
+                // line = regex_replace(line, re, "");
+                line = ltrim(line);
                 // skip the comment line or empty line
                 // \r is for windows file in linux
                 if (line.empty() || line[0] == '#' || line[0] == '\r')
@@ -294,8 +317,8 @@ namespace hui
                     spdlog::info("shade mode: phong");
                     break;
                 default:
-                    spdlog::error("unknown shade mode");
-                    return false;
+                    spdlog::warn("unknown shade mode");
+                    break;
                 }
             }
             return true;
