@@ -35,6 +35,15 @@ namespace hui
             virtual const Mat4x4f &getWorldMatrix() const = 0;
         };
 
+        inline Vec3f GetWorldPos(const Mobject &obj, const Vec3f &pos3D)
+        {
+            return transform_point(obj.getWorldMatrix(), pos3D);
+        }
+        inline Vec3f GetLocalPos(const Mobject &obj, const Vec3f &pos3D)
+        {
+            return transform_point(obj.getLocalMatrix(), pos3D);
+        }
+
         // such as: projection matrix
         class Mtransform
         {

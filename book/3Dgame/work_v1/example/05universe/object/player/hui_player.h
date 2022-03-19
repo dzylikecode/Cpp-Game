@@ -13,7 +13,7 @@ public:
     hui::triD::Geometric_v2 geo_play;
     hui::triD::CameraEuler_v1 camera;
     int tank_acc;
-    static const int TANK_ACC = 15;
+    static const int TANK_ACC = 900;
     int cam_y_angle;
     int turning_angle; // 描述玩家转向与 camera 的角度差
     float tank_speed;
@@ -40,7 +40,7 @@ void hui_player::init()
 
     static Data3D_v2 data_play;
     data_play.loadFromFile("RES/tank3.plg");
-    data_play.scaleShape(Vec3f{.75, .75, -.75});
+    data_play.scaleShape(Vec3f{.75, .75, -.75}); // 这会破坏顶点的法向量
     geo_play.loadFromData(data_play);
     geo_play.setPos(Vec3f{0, 0, 0});
     geo_play.setRotate(identity_mat<float, 4>());
@@ -107,62 +107,62 @@ void hui_player::update(const sf::Time &delta_time)
 {
     using namespace hui::triD;
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        tank_acc = TANK_ACC * 5;
+    }
+    else
+    {
+        tank_acc = TANK_ACC;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        tank_speed = tank_acc;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    {
+        tank_speed = -tank_acc;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        cam_y_angle -= 3;
+        turning_angle -= 2;
+        if (turning_angle < -max_turning_angle)
         {
-            tank_acc = TANK_ACC * 5;
+            turning_angle = -max_turning_angle;
         }
-        else 
+        bturning = true;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+        cam_y_angle += 3;
+        turning_angle += 2;
+        if (turning_angle > max_turning_angle)
         {
-            tank_acc = TANK_ACC;
+            turning_angle = max_turning_angle;
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        {
-            tank_speed = tank_acc;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            tank_speed = -tank_acc;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            cam_y_angle -= 3;
-            turning_angle -= 2;
-            if (turning_angle < -max_turning_angle)
-            {
-                turning_angle = -max_turning_angle;
-            }
-            bturning = true;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            cam_y_angle += 3;
-            turning_angle += 2;
-            if (turning_angle > max_turning_angle)
-            {
-                turning_angle = max_turning_angle;
-            }
-            bturning = true;
-        }
-        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::A) && !sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            bturning = false;
-        }
-
+        bturning = true;
+    }
+    if (!sf::Keyboard::isKeyPressed(sf::Keyboard::A) &&
+        !sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        bturning = false;
+    }
 
     // 更新 camera 的角度
     camera.setRotate(rot_mat_xyz<4>(0.0f,
                                     DegToRad(cam_y_angle),
                                     0.0f));
     // 更新 camera 的位置
-    Vec3f camera_relative_speed{0, 0, -tank_speed}; // 注意坐标系
-    Vec3f camera_absolute_speed = XYZ(camera.getWorldMatrix() * XYZ1(camera_relative_speed));
-    camera_absolute_speed -= camera.getPos();
-    // auto camera_new_pos = camera.getPos() + camera_absolute_speed * delta_time.asSeconds();
-    auto camera_new_pos = camera.getPos() + camera_absolute_speed;
-    camera.setPos(camera_new_pos);
+    Vec3f cam_local_speed{0, 0, -tank_speed}; // 注意坐标系
+    // 转化到 world 坐标系的向量
+    auto cam_world_speed = GetWorldPos(camera, cam_local_speed) - camera.getPos();
+    auto cam_new_pos = camera.getPos() +
+                       cam_world_speed * delta_time.asSeconds();
+    camera.setPos(cam_new_pos);
     // 更新 geo_play 的位置, 相对于 camera
     Vec3f geo_play_pos{0, -70, -camera_distance};
-    Vec3f geo_world_pos = XYZ(camera.getWorldMatrix() * XYZ1(geo_play_pos));
+    Vec3f geo_world_pos = GetWorldPos(camera, geo_play_pos);
     geo_play.setPos(geo_world_pos);
     // 更新 geo_play 的角度, 相对于 camera
     auto geo_play_rotate = rot_mat_xyz<4>(0.0f,

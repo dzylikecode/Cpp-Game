@@ -39,22 +39,23 @@ namespace hui
         //##############################################################################
         // boring overloads for enum class
         //##############################################################################
-        inline Poly_v1::Attribute operator|(Poly_v1::Attribute a, Poly_v1::Attribute b)
+        template <class T>
+        inline T operator|(T a, T b)
         {
-            return static_cast<Poly_v1::Attribute>(static_cast<int>(a) | static_cast<int>(b));
+            return static_cast<T>(static_cast<int>(a) | static_cast<int>(b));
         }
-
-        inline Poly_v1::Attribute operator&(Poly_v1::Attribute a, Poly_v1::Attribute b)
+        template <class T>
+        inline T operator&(T a, T b)
         {
-            return static_cast<Poly_v1::Attribute>(static_cast<int>(a) & static_cast<int>(b));
+            return static_cast<T>(static_cast<int>(a) & static_cast<int>(b));
         }
-
-        inline Poly_v1::Attribute operator|=(Poly_v1::Attribute &a, Poly_v1::Attribute b)
+        template <class T>
+        inline T operator|=(T &a, T b)
         {
             return a = a | b;
         }
-
-        inline Poly_v1::Attribute operator&=(Poly_v1::Attribute &a, Poly_v1::Attribute b)
+        template <class T>
+        inline T operator&=(T &a, T b)
         {
             return a = a & b;
         }
@@ -128,29 +129,6 @@ namespace hui
             void removeBackFace();
             void process3D();
         };
-        //##############################################################################
-        // again
-        //##############################################################################
-        inline Geometric_v2::Attribite operator|(Geometric_v2::Attribite a, Geometric_v2::Attribite b)
-        {
-            return static_cast<Geometric_v2::Attribite>(static_cast<int>(a) | static_cast<int>(b));
-        }
-        inline Geometric_v2::Attribite operator&(Geometric_v2::Attribite a, Geometric_v2::Attribite b)
-        {
-            return static_cast<Geometric_v2::Attribite>(static_cast<int>(a) & static_cast<int>(b));
-        }
-        inline Geometric_v2::Attribite operator|=(Geometric_v2::Attribite &a, Geometric_v2::Attribite b)
-        {
-            return a = a | b;
-        }
-        inline Geometric_v2::Attribite operator&=(Geometric_v2::Attribite &a, Geometric_v2::Attribite b)
-        {
-            return a = a & b;
-        }
-        //##############################################################################
-        // end of again
-        //##############################################################################
-
     }
 }
 #endif
