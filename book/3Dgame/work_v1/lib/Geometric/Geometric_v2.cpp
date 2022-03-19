@@ -63,7 +63,7 @@ namespace hui
             auto z = Z(vect_4D);
             auto width = m_camera->getWidth();
             auto height = m_camera->getHeight();
-            auto view_dist = m_camera->getViewDist();
+            auto view_dist = -m_camera->getViewDist();
             if (attr & CULL_Z)
             {
                 auto far = -m_camera->getFar(); // 看向的是负半轴
@@ -75,12 +75,13 @@ namespace hui
                     m_attribite |= CULL_Z;
                 }
             }
-
+            z -= getMaxRadius(); // 考虑最远的横截面
             if (attr & CULL_X)
             {
                 // 根据相机的锥形视野, 计算物体(0,0)点所在的视口大小
                 // 利用俯视图, 就是简单的相似三角形
-                auto width_max = width / 2.0f / view_dist * (-z); // 注意是负半轴
+                // 注意是负半轴
+                auto width_max = width / 2.0f / view_dist * z;
                 if (x + getMaxRadius() < -width_max ||
                     x - getMaxRadius() > width_max)
                 {
@@ -90,7 +91,7 @@ namespace hui
 
             if (attr & CULL_Y)
             {
-                auto height_max = height / 2.0f / view_dist * (-z);
+                auto height_max = height / 2.0f / view_dist * z;
                 if (y + getMaxRadius() < -height_max ||
                     y - getMaxRadius() > height_max)
                 {

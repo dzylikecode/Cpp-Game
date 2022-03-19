@@ -14,7 +14,7 @@ public:
     static const int tank_num = 24;
     static const int tower_num = 96;
     const hui::triD::CameraEuler_v1 &camera;
-    static const int marker_size = 200;
+    static const int marker_size = 75;
     static const int marker_num_x = 2 * universe_radius / marker_size;
     static const int marker_num_z = 2 * universe_radius / marker_size;
     static const int marker_num = marker_num_x * marker_num_z;
@@ -108,9 +108,9 @@ void hui_static::update()
             using Random = effolkronium::random_static;
             using namespace hui::triD;
             auto x = i * marker_size - universe_radius +
-                     Random::get<float>(-marker_size / 2, marker_size / 2);
+                     Random::get<float>(-marker_size / 10, marker_size / 10);
             auto z = j * marker_size - universe_radius +
-                     Random::get<float>(-marker_size / 2, marker_size / 2);
+                     Random::get<float>(-marker_size / 10, marker_size / 10);
             auto y = 0.0f;
             geo_marker[i * marker_num_z + j].setPos(Vec3f{x, y, z});
         }

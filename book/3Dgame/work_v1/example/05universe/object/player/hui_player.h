@@ -31,11 +31,11 @@ public:
 void hui_player::init()
 {
     using namespace hui::triD;
-    camera.setPos(Vec3f{0, 40, 0});
+    camera.setPos(Vec3f{0, 100, 0});
     camera.setRotate(identity_mat<float, 4>());
     camera.setFov(DegToRad(120));
     camera.setFar(12000);
-    camera.setNear(100);
+    camera.setNear(150);
     camera.setSize(video_mode.width, video_mode.height);
 
     static Data3D_v2 data_play;
